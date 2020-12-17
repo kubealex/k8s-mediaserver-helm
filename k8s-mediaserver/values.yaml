@@ -13,10 +13,10 @@ general:
   storage:
     pvcName: mediaserver-pvc
     size: 5Gi
-    pvcStorageClass: rook-cephfs
+    pvcStorageClass: {}
     nfs: false 
-    nfsServer: k8s-test-loadbalancer.k8s.test
-    nfsPath: /srv/k8s
+    nfsServer: 
+    nfsPath: 
 
 sonarr:
   container: 
