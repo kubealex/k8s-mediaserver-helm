@@ -11,9 +11,17 @@ Repo for k8s-mediaserver helm chart, backing **[k8s-mediaserver-operator](https:
 | general.pgid | The GID for the process | 1000 |
 | general.puid | The UID for the process | 1000 |
 | general.nodeSelector | Node Selector for all the pods | {} |
+| general.storage.customVolume | Flag if you want to supply your own volume and not use a PVC | false |
 | general.storage.pvcName  | Name of the persistenVolumeClaim configured in deployments | mediaserver-pvc |
-| general.storage.pvcStorageClass  | Specifies a storageClass for the PVC | {} |
+| general.storage.pvcStorageClass  | Specifies a storageClass for the PVC | "" |
 | general.storage.size | Size of the persistenVolume | 50Gi |
+| general.storage.subPaths.tv | Default subpath for tv series folder on used storage | media/tv |
+| general.storage.subPaths.movies | Default subpath for movies folder on used storage | media/movies |
+| general.storage.subPaths.downloads | Default root path for downloads for both sabnzbd and transmission on used storage | downloads |
+| general.storage.subPaths.transmission | Default subpath for transmission downloads on used storage | general.storage.subPaths.downloads/transmission |
+| general.storage.subPaths.sabnzbd | Default subpath for sabnzbd downloads on used storage | general.storage.subPaths.downloads/sabnzbd |
+| general.storage.subPaths.config | Default subpath for all config files on used storage | config |
+| general.storage.volumes | Supply custom volume to be mounted for all services | {} |
 
 # Plex
 
@@ -32,6 +40,7 @@ Repo for k8s-mediaserver helm chart, backing **[k8s-mediaserver-operator](https:
 | plex.ingress.path | The path where the application is exposed | /plex |
 | plex.ingress.tls.enabled | If true, tls is enabled | false |
 | plex.ingress.tls.secretName | Name of the secret holding certificates for the secure ingress | "" |
+| plex.resources | Limits and Requests for the container | {} | 
 
 # Sonarr
 
@@ -47,7 +56,8 @@ Repo for k8s-mediaserver helm chart, backing **[k8s-mediaserver-operator](https:
 | sonarr.ingress.annotations | Additional field for annotations, if needed | {} |
 | sonarr.ingress.path | The path where the application is exposed | /sonarr |
 | sonarr.ingress.tls.enabled | If true, tls is enabled | false |
-| sonarr.ingress.tls.secretName | Name of the secret holding certificates for the secure ingress | "" |
+| sonarr.ingress.tls.secretName | Name of the secret holding certificates for the secure ingress | "" | 
+| sonarr.resources | Limits and Requests for the container | {} |
 
 # Radarr
 
@@ -63,7 +73,8 @@ Repo for k8s-mediaserver helm chart, backing **[k8s-mediaserver-operator](https:
 | radarr.ingress.annotations | Additional field for annotations, if needed | {} |
 | radarr.ingress.path | The path where the application is exposed | /radarr  |
 | radarr.ingress.tls.enabled | If true, tls is enabled | false |
-| radarr.ingress.tls.secretName | Name of the secret holding certificates for the secure ingress | "" |
+| radarr.ingress.tls.secretName | Name of the secret holding certificates for the secure ingress | "" | 
+| radarr.resources | Limits and Requests for the container | {} |
 
 # Jackett
 
@@ -79,7 +90,8 @@ Repo for k8s-mediaserver helm chart, backing **[k8s-mediaserver-operator](https:
 | jackett.ingress.annotations | Additional field for annotations, if needed | {} |
 | jackett.ingress.path | The path where the application is exposed | /jackett |
 | jackett.ingress.tls.enabled | If true, tls is enabled | false |
-| jackett.ingress.tls.secretName | Name of the secret holding certificates for the secure ingress | "" |
+| jackett.ingress.tls.secretName | Name of the secret holding certificates for the secure ingress | "" | 
+| jackett.resources | Limits and Requests for the container | {} |
 
 # Transmission
 
@@ -104,7 +116,8 @@ Repo for k8s-mediaserver helm chart, backing **[k8s-mediaserver-operator](https:
 | transmission.ingress.tls.secretName | Name of the secret holding certificates for the secure ingress | "" |
 | transmission.config.auth.enabled | Enables authentication for transmission | false |
 | transmission.config.auth.username | Username for transmission | "" |
-| transmission.config.auth.password | Password for transmission | "" |
+| transmission.config.auth.password | Password for transmission | "" | 
+| transmission.resources | Limits and Requests for the container | {} |
 
 # Sabnzbd
 
@@ -125,7 +138,8 @@ Repo for k8s-mediaserver helm chart, backing **[k8s-mediaserver-operator](https:
 | sabnzbd.ingress.annotations | Additional field for annotations, if needed | {} |
 | sabnzbd.ingress.path | The path where the application is exposed | /sabnzbd |
 | sabnzbd.ingress.tls.enabled | If true, tls is enabled | false |
-| sabnzbd.ingress.tls.secretName | Name of the secret holding certificates for the secure ingress | "" |
+| sabnzbd.ingress.tls.secretName | Name of the secret holding certificates for the secure ingress | "" | 
+| sabnzbd.resources | Limits and Requests for the container | {} |
 
 ## About the project
 
