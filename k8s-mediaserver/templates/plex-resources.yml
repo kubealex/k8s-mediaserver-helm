@@ -54,9 +54,10 @@ spec:
           readinessProbe:
             httpGet:
               port: {{ .Values.plex.container.port }}
-              path: "/"
+              path: "/web/index.html"
             initialDelaySeconds: 20
             periodSeconds: 15
+            timeoutSeconds: 20
           ports:
             - name: plex-port
               containerPort: {{ .Values.plex.container.port }}
